@@ -5,11 +5,23 @@
 ****
 ## Installer Go
 
-Pour Fedora :
+Sous Fedora :
 ```bash
 sudo dnf install golang
 ```
+Sous MacOS :
+```bash
+brew install go
+```
+
 Pour les autres distributions, référez-vous à votre package manager ou suivez directement le [guide officiel](https://golang.org/doc/install)
+
+
+Assurez-vous ensuite que vous disposez d'une version à jour de go :
+```bash
+❯ go version
+go version go1.13.8 darwin/amd64 # 🎉
+```
 
 
 ****
@@ -31,12 +43,62 @@ func main() {
 	fmt.Println("Hello World")
 }
 ```
-Un exécutable go possède obligatoirement un package main ainsi qu'une fonction main qui sera le point d'entrée du code.
 
-Pour compiler et exécuter le code :
+> *Qu'est ce que l'on vient de faire ?*
+
+On vient tout simplement d'importer le package [`fmt`]((https://golang.org/pkg/fmt/)) qui est un package vous permettant principalement d'afficher / formatter du texte. Il contient de nombreuse fonctions que vous pouvez voir dans la [doc](https://golang.org/pkg/fmt/) ou directement dans votre IDE si vous avez l'auto-complétion d'activée.
+
+Par la suite on a simplement appelé la fonction [`Println`](https://golang.org/pkg/fmt/#Println) qui nous permet d'afficher du texte suivi d'un retour à la ligne.
+
+<br>
+
+> * Comment compiler mon code ?*
+
+Un exécutable go possède obligatoirement un package `main` et une fonction `main` qui sera le point d'entrée de votre code.
+
+Vous avez deux possibilité pour éxecuter votre code en go.
+
+Via un `go build` pour créer un éxecutable :
 ```bash
-go run main.go
+> go build -o monProjet main.go
+> ./monProjet
+Hello World
 ```
+
+Ou via `go run` pour compiler et éxecuter directement le code :
+```bash
+> go run main.go
+Hello World
+```
+
+> * Il y a une norme de code à suivre ?*
+
+En go vous êtes libre de coder comme bon vous semble, on ne vous tappera pas sur les doigts si vous utilisez des espaces ou des tabs comme identation.
+
+La seule règle à respecter est d'utiliser l'outil [gofmt](https://golang.org/cmd/gofmt/) pour formatter votre code avant de le publier.
+
+```bash
+> cat main.go # un code très moche...
+package main
+import "fmt"
+
+func main()         {
+fmt.Println(       "Hello World")
+}
+
+> gofmt -w main.go # on formate notre code
+> cat main.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World")
+}
+```
+
+
+On vous laisse quelques détails [ici](https://blog.golang.org/go-fmt-your-code).
 
 ![package](https://github.com/egonelbre/gophers/blob/master/vector/fairy-tale/witch-learning.svg)
 
@@ -60,8 +122,8 @@ On vous demande bien sur de ne pas utiliser une fonction déjà existante mais d
 ****
 ## Exercice 2 - Lister les fichiers
 
-Maintenant que vous connaissez les bases, on peut commencer le projet du workshop.  
-La première étape va être de créer une fonction capable de lister les fichiers et dossier dans un dossier.
+Maintenant que vous connaissez les bases, nous pouvons commencer le projet du workshop.  
+La première étape va être de créer une fonction capable de lister les fichiers et les dossiers.
 
 Je vous conseil d'utiliser la fonction `ReadDir` du paquet `io/ioutil` pour récupérer les fichiers et dossier contenus dans un dossier.
 
