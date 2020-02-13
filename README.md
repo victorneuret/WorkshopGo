@@ -52,7 +52,7 @@ Par la suite on a simplement appelé la fonction [`Println`](https://golang.org/
 
 <br>
 
-> * Comment compiler mon code ?*
+> *Comment compiler mon code ?*
 
 Un exécutable go possède obligatoirement un package `main` et une fonction `main` qui sera le point d'entrée de votre code.
 
@@ -71,7 +71,7 @@ Ou via `go run` pour compiler et éxecuter directement le code :
 Hello World
 ```
 
-> * Il y a une norme de code à suivre ?*
+> *Il y a une norme de code à suivre ?*
 
 En go vous êtes libre de coder comme bon vous semble, on ne vous tappera pas sur les doigts si vous utilisez des espaces ou des tabs comme identation.
 
