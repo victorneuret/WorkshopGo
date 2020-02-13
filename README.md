@@ -121,6 +121,8 @@ $ curl localhost:8080/hello
 {"message": "hello world"}
 ```
 
+![api](https://github.com/ashleymcnamara/gophers/blob/master/MovingGopher.png)
+
 
 ****
 ## Exercice 4 - Renvoyer la liste de fichiers
@@ -187,6 +189,8 @@ $ cat gopher
 random file content
 ```
 
+![dl](https://github.com/ashleymcnamara/gophers/blob/master/LazyGopher.png)
+
 
 ****
 ## Exercice 7 - Upload un fichier
@@ -195,3 +199,5 @@ Créez une nouvelle route permettant d'upload un fichier.
 Vous ne devez plus envoyer un json en paramètre, mais un fichier.
 
 Pour le reste, on vous laisse chercher par vous-même. Hésitez pas à nous poser des questions si besoin.
+
+![go10](https://blog.golang.org/10years/gopher10th-small.jpg)
