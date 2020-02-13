@@ -46,7 +46,7 @@ func main() {
 
 > *Qu'est ce que l'on vient de faire ?*
 
-On vient tout simplement d'importer le package [`fmt`]((https://golang.org/pkg/fmt/)) qui est un package vous permettant principalement d'afficher / formatter du texte. Il contient de nombreuse fonctions que vous pouvez voir dans la [doc](https://golang.org/pkg/fmt/) ou directement dans votre IDE si vous avez l'auto-complétion d'activée.
+On vient tout simplement d'importer le package [`Fmt`]((https://golang.org/pkg/fmt/)) qui est un package vous permettant principalement d'afficher / formatter du texte. Il contient de nombreuses fonctions que vous pouvez voir dans la [doc](https://golang.org/pkg/fmt/) ou directement dans votre IDE si vous avez l'auto-complétion d'activée.
 
 Par la suite on a simplement appelé la fonction [`Println`](https://golang.org/pkg/fmt/#Println) qui nous permet d'afficher du texte suivi d'un retour à la ligne.
 
@@ -56,7 +56,7 @@ Par la suite on a simplement appelé la fonction [`Println`](https://golang.org/
 
 Un exécutable go possède obligatoirement un package `main` et une fonction `main` qui sera le point d'entrée de votre code.
 
-Vous avez deux possibilité pour éxecuter votre code en go.
+Vous avez deux possibilités pour éxecuter votre code en go.
 
 Via un `go build` pour créer un éxecutable :
 ```bash
@@ -73,7 +73,7 @@ Hello World
 
 > *Il y a une norme de code à suivre ?*
 
-En go vous êtes libre de coder comme bon vous semble, on ne vous tappera pas sur les doigts si vous utilisez des espaces ou des tabs comme identation.
+En go vous êtes libre de coder comme bon vous semble, on ne vous tapera pas sur les doigts si vous utilisez des espaces ou des tabs comme indentation.
 
 La seule règle à respecter est d'utiliser l'outil [gofmt](https://golang.org/cmd/gofmt/) pour formatter votre code avant de le publier.
 
@@ -137,17 +137,21 @@ Une API (Application Programming Interface) web permet de faire des requêtes su
 
 Pour la première route de notre API, nous allons faire un simple hello world.
 
-Le paquet `net/http` de Go nous permet de créer des routes très simplement et sans avoir besoin de librairies externes.  
-Tout d'abord, il nous faut définir et écouter sur un port.  
+Le paquet `net/http` de Go nous permet de créer des routes très simplement et sans avoir besoin de librairie externe.  
+Tout d'abord, il nous faut écouter sur un port afin de recevoir des requêtes.  
 ```Go
 log.Fatal(http.ListenAndServe(":8080", nil))
 ```
+
 La fonction qui nous intéresse est `HandleFunc`. Elle nous permet d'assigner une route à une fonction.
+
 ```Go
 http.HandleFunc("/hello", helloWorld)
 ```
-Le premier paramètre est donc le nom de la route et le deuxième est la fonction qui va être appelée lorsque quelqu'un va utiliser la route assignée.  
+
+Le premier paramètre est donc le nom de la route et le deuxième est la fonction qui va être appelée lorsque quelqu'un va appeler la route en question.
 Une fonction de route doit se présenter sous cette forme :
+
 ```Go
 func helloWorld(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")      // réponse de type JSON
@@ -155,7 +159,7 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`{"message": "hello world"}`))           // envoie de la réponse
 }
 ```
-Une fonction de route prend toujours ces deux paramètres. Le premier (`w http.ResponseWriter`) nous permet de renvoyer une réponse et le deuxième (`r *http.Request`) nous permet de récupérer les informations données lors de la requête.
+Une fonction de route prend toujours ces deux paramètres. Le premier (`w http.ResponseWriter`) nous permet de renvoyer une réponse et le deuxième (`r *http.Request`) nous permet de récupérer les informations contenues dans la requête.
 
 **Essayer d'utiliser ce code et de rajouter une route pour bien comprendre le fonctionement**
 
